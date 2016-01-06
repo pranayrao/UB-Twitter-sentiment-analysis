@@ -1,0 +1,299 @@
+/****************************************************************************************************************************/
+Log for HIVE query for transforming the tweet text into an array  - 2secs
+/****************************************************************************************************************************/
+15/12/08 21:35:46 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:35:46 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:35:46 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:35:46 INFO ql.Driver: <PERFLOG method=Driver.run>
+15/12/08 21:35:46 INFO ql.Driver: <PERFLOG method=TimeToSubmit>
+15/12/08 21:35:46 INFO ql.Driver: <PERFLOG method=compile>
+15/12/08 21:35:46 INFO parse.ParseDriver: Parsing command: use default
+15/12/08 21:35:46 INFO parse.ParseDriver: Parse Completed
+15/12/08 21:35:46 INFO ql.Driver: Semantic Analysis Completed
+15/12/08 21:35:46 INFO ql.Driver: Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+15/12/08 21:35:46 INFO ql.Driver: </PERFLOG method=compile start=1449639346282 end=1449639346283 duration=1>
+15/12/08 21:35:46 INFO ql.Driver: <PERFLOG method=Driver.execute>
+15/12/08 21:35:46 INFO ql.Driver: Starting command: use default
+15/12/08 21:35:46 INFO ql.Driver: </PERFLOG method=TimeToSubmit start=1449639346282 end=1449639346283 duration=1>
+15/12/08 21:35:46 INFO ql.Driver: </PERFLOG method=Driver.execute start=1449639346283 end=1449639346297 duration=14>
+OK
+15/12/08 21:35:46 INFO ql.Driver: OK
+15/12/08 21:35:46 INFO ql.Driver: <PERFLOG method=releaseLocks>
+15/12/08 21:35:46 INFO ql.Driver: </PERFLOG method=releaseLocks start=1449639346297 end=1449639346297 duration=0>
+15/12/08 21:35:46 INFO ql.Driver: </PERFLOG method=Driver.run start=1449639346282 end=1449639346297 duration=15>
+15/12/08 21:35:46 INFO ql.Driver: <PERFLOG method=compile>
+15/12/08 21:35:46 INFO parse.ParseDriver: Parsing command: create view view1 as select id, words from tweet_table lateral view explode(sentences(lower(text))) dummy as words
+15/12/08 21:35:46 INFO parse.ParseDriver: Parse Completed
+15/12/08 21:35:46 INFO parse.SemanticAnalyzer: Starting Semantic Analysis
+15/12/08 21:35:46 INFO parse.SemanticAnalyzer: Creating view view1 position=12
+15/12/08 21:35:46 INFO parse.SemanticAnalyzer: Completed phase 1 of Semantic Analysis
+15/12/08 21:35:46 INFO parse.SemanticAnalyzer: Get metadata for source tables
+15/12/08 21:35:46 INFO parse.SemanticAnalyzer: Get metadata for subqueries
+15/12/08 21:35:46 INFO parse.SemanticAnalyzer: Get metadata for destination tables
+15/12/08 21:35:46 INFO parse.SemanticAnalyzer: Completed getting MetaData in Semantic Analysis
+15/12/08 21:35:46 INFO ql.Driver: Semantic Analysis Completed
+15/12/08 21:35:46 INFO ql.Driver: Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:id, type:string, comment:null), FieldSchema(name:words, type:array<string>, comment:null)], properties:null)
+15/12/08 21:35:46 INFO ql.Driver: </PERFLOG method=compile start=1449639346297 end=1449639346335 duration=38>
+15/12/08 21:35:46 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:35:46 INFO ql.Driver: <PERFLOG method=Driver.execute>
+15/12/08 21:35:46 INFO ql.Driver: Starting command: create view view1 as select id, words from tweet_table lateral view explode(sentences(lower(text))) dummy as words
+15/12/08 21:35:46 INFO ql.Driver: </PERFLOG method=TimeToSubmit end=1449639346550>
+15/12/08 21:35:46 INFO hive.metastore: Trying to connect to metastore with URI thrift://sandbox:9083
+15/12/08 21:35:46 INFO hive.metastore: Waiting 1 seconds before next connection attempt.
+15/12/08 21:35:47 INFO hive.metastore: Connected to metastore.
+15/12/08 21:35:47 INFO ql.Driver: </PERFLOG method=Driver.execute start=1449639346550 end=1449639347613 duration=1063>
+OK
+15/12/08 21:35:47 INFO ql.Driver: OK
+15/12/08 21:35:48 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:35:48 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+
+/**************************************************************************************************/
+Log for HIVE query for storing individual words in seperate records - 3secs
+/**************************************************************************************************/
+15/12/08 21:39:44 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:39:44 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:39:44 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:39:44 INFO ql.Driver: <PERFLOG method=Driver.run>
+15/12/08 21:39:44 INFO ql.Driver: <PERFLOG method=TimeToSubmit>
+15/12/08 21:39:44 INFO ql.Driver: <PERFLOG method=compile>
+15/12/08 21:39:44 INFO parse.ParseDriver: Parsing command: use default
+15/12/08 21:39:44 INFO parse.ParseDriver: Parse Completed
+15/12/08 21:39:44 INFO ql.Driver: Semantic Analysis Completed
+15/12/08 21:39:44 INFO ql.Driver: Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+15/12/08 21:39:44 INFO ql.Driver: </PERFLOG method=compile start=1449639584734 end=1449639584735 duration=1>
+15/12/08 21:39:44 INFO ql.Driver: <PERFLOG method=Driver.execute>
+15/12/08 21:39:44 INFO ql.Driver: Starting command: use default
+15/12/08 21:39:44 INFO ql.Driver: </PERFLOG method=TimeToSubmit start=1449639584734 end=1449639584736 duration=2>
+15/12/08 21:39:44 INFO ql.Driver: </PERFLOG method=Driver.execute start=1449639584735 end=1449639584746 duration=11>
+OK
+15/12/08 21:39:44 INFO ql.Driver: OK
+15/12/08 21:39:44 INFO ql.Driver: <PERFLOG method=releaseLocks>
+15/12/08 21:39:44 INFO ql.Driver: </PERFLOG method=releaseLocks start=1449639584747 end=1449639584747 duration=0>
+15/12/08 21:39:44 INFO ql.Driver: </PERFLOG method=Driver.run start=1449639584734 end=1449639584747 duration=13>
+15/12/08 21:39:44 INFO ql.Driver: <PERFLOG method=compile>
+15/12/08 21:39:44 INFO parse.ParseDriver: Parsing command: create view view2 as select id, word from view1 lateral view explode( words ) dummy as word
+15/12/08 21:39:44 INFO parse.ParseDriver: Parse Completed
+15/12/08 21:39:44 INFO parse.SemanticAnalyzer: Starting Semantic Analysis
+15/12/08 21:39:44 INFO parse.SemanticAnalyzer: Creating view view2 position=12
+15/12/08 21:39:44 INFO parse.SemanticAnalyzer: Completed phase 1 of Semantic Analysis
+15/12/08 21:39:44 INFO parse.SemanticAnalyzer: Get metadata for source tables
+15/12/08 21:39:44 INFO parse.ParseDriver: Parsing command: select `tweet_table`.`id`, `dummy`.`words` from `default`.`tweet_table` lateral view explode(sentences(lower(`tweet_table`.`text`))) `dummy` as `words`
+15/12/08 21:39:44 INFO parse.ParseDriver: Parse Completed
+15/12/08 21:39:44 INFO parse.SemanticAnalyzer: Get metadata for subqueries
+15/12/08 21:39:44 INFO parse.SemanticAnalyzer: Get metadata for source tables
+15/12/08 21:39:44 INFO parse.SemanticAnalyzer: Get metadata for subqueries
+15/12/08 21:39:44 INFO parse.SemanticAnalyzer: Get metadata for destination tables
+15/12/08 21:39:44 INFO parse.SemanticAnalyzer: Get metadata for destination tables
+15/12/08 21:39:44 INFO parse.SemanticAnalyzer: Completed getting MetaData in Semantic Analysis
+15/12/08 21:39:44 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:39:45 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:39:45 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:39:45 INFO ql.Driver: Semantic Analysis Completed
+15/12/08 21:39:45 INFO ql.Driver: Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:id, type:string, comment:null), FieldSchema(name:word, type:string, comment:null)], properties:null)
+15/12/08 21:39:45 INFO ql.Driver: </PERFLOG method=compile start=1449639584747 end=1449639585034 duration=287>
+15/12/08 21:39:45 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:39:45 INFO ql.Driver: <PERFLOG method=Driver.execute>
+15/12/08 21:39:45 INFO ql.Driver: Starting command: create view view2 as select id, word from view1 lateral view explode( words ) dummy as word
+15/12/08 21:39:45 INFO ql.Driver: </PERFLOG method=TimeToSubmit end=1449639585058>
+15/12/08 21:39:45 INFO hive.metastore: Trying to connect to metastore with URI thrift://sandbox:9083
+15/12/08 21:39:45 INFO hive.metastore: Waiting 1 seconds before next connection attempt.
+15/12/08 21:39:46 INFO hive.metastore: Connected to metastore.
+15/12/08 21:39:46 INFO ql.Driver: </PERFLOG method=Driver.execute start=1449639585058 end=1449639586318 duration=1260>
+OK
+15/12/08 21:39:46 INFO ql.Driver: OK
+15/12/08 21:39:47 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:39:47 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+
+/***************************************************************************************************/
+Log for HIVE query for assigning polarity to words - 3secs
+/***************************************************************************************************/
+15/12/08 21:46:12 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:46:12 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:46:12 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:46:12 INFO ql.Driver: <PERFLOG method=Driver.run>
+15/12/08 21:46:12 INFO ql.Driver: <PERFLOG method=TimeToSubmit>
+15/12/08 21:46:12 INFO ql.Driver: <PERFLOG method=compile>
+15/12/08 21:46:12 INFO parse.ParseDriver: Parsing command: use default
+15/12/08 21:46:12 INFO parse.ParseDriver: Parse Completed
+15/12/08 21:46:12 INFO ql.Driver: Semantic Analysis Completed
+15/12/08 21:46:12 INFO ql.Driver: Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+15/12/08 21:46:12 INFO ql.Driver: </PERFLOG method=compile start=1449639972632 end=1449639972634 duration=2>
+15/12/08 21:46:12 INFO ql.Driver: <PERFLOG method=Driver.execute>
+15/12/08 21:46:12 INFO ql.Driver: Starting command: use default
+15/12/08 21:46:12 INFO ql.Driver: </PERFLOG method=TimeToSubmit start=1449639972632 end=1449639972634 duration=2>
+15/12/08 21:46:12 INFO ql.Driver: </PERFLOG method=Driver.execute start=1449639972634 end=1449639972641 duration=7>
+OK
+15/12/08 21:46:12 INFO ql.Driver: OK
+15/12/08 21:46:12 INFO ql.Driver: <PERFLOG method=releaseLocks>
+15/12/08 21:46:12 INFO ql.Driver: </PERFLOG method=releaseLocks start=1449639972642 end=1449639972642 duration=0>
+15/12/08 21:46:12 INFO ql.Driver: </PERFLOG method=Driver.run start=1449639972632 end=1449639972642 duration=10>
+15/12/08 21:46:12 INFO ql.Driver: <PERFLOG method=compile>
+15/12/08 21:46:12 INFO parse.ParseDriver: Parsing command: create view view3 as select 
+    id, 
+    view2.word, 
+    case d.polarity 
+      when  'negative' then -1
+      when 'positive' then 1 
+      else 0 end as polarity 
+ from view2 left outer join dictionary d on view2.word = d.word
+15/12/08 21:46:12 INFO parse.ParseDriver: Parse Completed
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Starting Semantic Analysis
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Creating view view3 position=12
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Completed phase 1 of Semantic Analysis
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Get metadata for source tables
+15/12/08 21:46:12 INFO parse.ParseDriver: Parsing command: select `view1`.`id`, `dummy`.`word` from `default`.`view1` lateral view explode( `view1`.`words` ) `dummy` as `word`
+15/12/08 21:46:12 INFO parse.ParseDriver: Parse Completed
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Get metadata for subqueries
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Get metadata for source tables
+15/12/08 21:46:12 INFO parse.ParseDriver: Parsing command: select `tweet_table`.`id`, `dummy`.`words` from `default`.`tweet_table` lateral view explode(sentences(lower(`tweet_table`.`text`))) `dummy` as `words`
+15/12/08 21:46:12 INFO parse.ParseDriver: Parse Completed
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Get metadata for subqueries
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Get metadata for source tables
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Get metadata for subqueries
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Get metadata for destination tables
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Get metadata for destination tables
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Get metadata for destination tables
+15/12/08 21:46:12 INFO parse.SemanticAnalyzer: Completed getting MetaData in Semantic Analysis
+15/12/08 21:46:12 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:46:12 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:46:12 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:46:12 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:46:12 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:46:12 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:46:12 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:46:12 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:46:12 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:46:12 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 21:46:12 INFO ql.Driver: Semantic Analysis Completed
+15/12/08 21:46:12 INFO ql.Driver: Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:id, type:string, comment:null), FieldSchema(name:word, type:string, comment:null), FieldSchema(name:polarity, type:int, comment:null)], properties:null)
+15/12/08 21:46:12 INFO ql.Driver: </PERFLOG method=compile start=1449639972642 end=1449639972737 duration=95>
+15/12/08 21:46:12 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:46:12 INFO ql.Driver: <PERFLOG method=Driver.execute>
+15/12/08 21:46:12 INFO ql.Driver: Starting command: create view view3 as select 
+    id, 
+    view2.word, 
+    case d.polarity 
+      when  'negative' then -1
+      when 'positive' then 1 
+      else 0 end as polarity 
+ from view2 left outer join dictionary d on view2.word = d.word
+15/12/08 21:46:12 INFO ql.Driver: </PERFLOG method=TimeToSubmit end=1449639972928>
+15/12/08 21:46:12 INFO hive.metastore: Trying to connect to metastore with URI thrift://sandbox:9083
+15/12/08 21:46:12 INFO hive.metastore: Waiting 1 seconds before next connection attempt.
+15/12/08 21:46:13 INFO hive.metastore: Connected to metastore.
+15/12/08 21:46:14 INFO ql.Driver: </PERFLOG method=Driver.execute start=1449639972927 end=1449639974049 duration=1122>
+OK
+15/12/08 21:46:14 INFO ql.Driver: OK
+15/12/08 21:46:15 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 21:46:15 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+
+/*******************************************************************************************************/
+Log for HIVE query for loading a table with tweets and sentiments - 5secs
+/*******************************************************************************************************/
+
+15/12/08 22:22:25 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 22:22:25 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 22:22:25 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 22:22:25 INFO ql.Driver: <PERFLOG method=Driver.run>
+15/12/08 22:22:25 INFO ql.Driver: <PERFLOG method=TimeToSubmit>
+15/12/08 22:22:25 INFO ql.Driver: <PERFLOG method=compile>
+15/12/08 22:22:25 INFO parse.ParseDriver: Parsing command: use default
+15/12/08 22:22:25 INFO parse.ParseDriver: Parse Completed
+15/12/08 22:22:25 INFO ql.Driver: Semantic Analysis Completed
+15/12/08 22:22:25 INFO ql.Driver: Returning Hive schema: Schema(fieldSchemas:null, properties:null)
+15/12/08 22:22:25 INFO ql.Driver: </PERFLOG method=compile start=1449642145608 end=1449642145609 duration=1>
+15/12/08 22:22:25 INFO ql.Driver: <PERFLOG method=Driver.execute>
+15/12/08 22:22:25 INFO ql.Driver: Starting command: use default
+15/12/08 22:22:25 INFO ql.Driver: </PERFLOG method=TimeToSubmit start=1449642145608 end=1449642145610 duration=2>
+15/12/08 22:22:25 INFO ql.Driver: </PERFLOG method=Driver.execute start=1449642145610 end=1449642145619 duration=9>
+OK
+15/12/08 22:22:25 INFO ql.Driver: OK
+15/12/08 22:22:25 INFO ql.Driver: <PERFLOG method=releaseLocks>
+15/12/08 22:22:25 INFO ql.Driver: </PERFLOG method=releaseLocks start=1449642145620 end=1449642145620 duration=0>
+15/12/08 22:22:25 INFO ql.Driver: </PERFLOG method=Driver.run start=1449642145608 end=1449642145620 duration=12>
+15/12/08 22:22:25 INFO ql.Driver: <PERFLOG method=compile>
+15/12/08 22:22:25 INFO parse.ParseDriver: Parsing command: CREATE TABLE scoredtweets 
+STORED AS ORC
+AS
+SELECT 
+  t.*,
+  case s.sentiment 
+    when 'positive' then 2 
+    when 'neutral' then 1 
+    when 'negative' then 0 
+  end as sentiment  
+FROM tweet_table t LEFT OUTER JOIN sentiment_score s on t.id = s.id
+15/12/08 22:22:25 INFO parse.ParseDriver: Parse Completed
+15/12/08 22:22:25 INFO parse.SemanticAnalyzer: Starting Semantic Analysis
+15/12/08 22:22:25 INFO parse.SemanticAnalyzer: Creating table scoredtweets position=13
+15/12/08 22:22:25 INFO parse.SemanticAnalyzer: Completed phase 1 of Semantic Analysis
+15/12/08 22:22:25 INFO parse.SemanticAnalyzer: Get metadata for source tables
+15/12/08 22:22:25 INFO parse.SemanticAnalyzer: Get metadata for subqueries
+15/12/08 22:22:25 INFO parse.SemanticAnalyzer: Get metadata for destination tables
+15/12/08 22:22:25 INFO parse.SemanticAnalyzer: Completed getting MetaData in Semantic Analysis
+15/12/08 22:22:25 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 22:22:25 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 22:22:25 WARN parse.TypeCheckProcFactory: Invalid type entry TOK_TABLE_OR_COL=null
+15/12/08 22:22:25 INFO ppd.OpProcFactory: Processing for FS(60)
+15/12/08 22:22:25 INFO ppd.OpProcFactory: Processing for SEL(59)
+15/12/08 22:22:25 INFO ppd.OpProcFactory: Processing for JOIN(58)
+15/12/08 22:22:25 INFO ppd.OpProcFactory: Processing for RS(56)
+15/12/08 22:22:25 INFO ppd.OpProcFactory: Processing for TS(54)
+15/12/08 22:22:25 INFO ppd.OpProcFactory: Processing for RS(57)
+15/12/08 22:22:25 INFO ppd.OpProcFactory: Processing for TS(55)
+15/12/08 22:22:25 INFO exec.Utilities: Cache Content Summary for hdfs://sandbox:8020/apps/hive/warehouse/tweet_table length: 182414 file count: 1 directory count: 1
+15/12/08 22:22:25 INFO exec.Utilities: Cache Content Summary for hdfs://sandbox:8020/apps/hive/warehouse/sentiment_score length: 8347 file count: 1 directory count: 1
+15/12/08 22:22:25 INFO physical.MetadataOnlyOptimizer: Looking for table scans where optimization is applicable
+15/12/08 22:22:25 INFO physical.MetadataOnlyOptimizer: Found 0 metadata only table scans
+15/12/08 22:22:25 INFO physical.MetadataOnlyOptimizer: Looking for table scans where optimization is applicable
+15/12/08 22:22:25 INFO physical.MetadataOnlyOptimizer: Found 0 metadata only table scans
+15/12/08 22:22:25 INFO parse.SemanticAnalyzer: Completed plan generation
+15/12/08 22:22:25 INFO ql.Driver: Semantic Analysis Completed
+15/12/08 22:22:25 INFO ql.Driver: Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:created, type:string, comment:null), FieldSchema(name:favoritecount, type:string, comment:null), FieldSchema(name:favorited, type:string, comment:null), FieldSchema(name:id, type:string, comment:null), FieldSchema(name:isretweet, type:string, comment:null), FieldSchema(name:latitude, type:string, comment:null), FieldSchema(name:longitude, type:string, comment:null), FieldSchema(name:replytosid, type:string, comment:null), FieldSchema(name:replytosn, type:string, comment:null), FieldSchema(name:replytouid, type:string, comment:null), FieldSchema(name:retweetcount, type:string, comment:null), FieldSchema(name:retweeted, type:string, comment:null), FieldSchema(name:screenname, type:string, comment:null), FieldSchema(name:text, type:string, comment:null), FieldSchema(name:truncated, type:string, comment:null), FieldSchema(name:sentiment, type:int, comment:null)], properties:null)
+15/12/08 22:22:25 INFO ql.Driver: </PERFLOG method=compile start=1449642145620 end=1449642145764 duration=144>
+15/12/08 22:22:25 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+15/12/08 22:22:25 INFO ql.Driver: <PERFLOG method=Driver.execute>
+15/12/08 22:22:25 INFO ql.Driver: Starting command: CREATE TABLE scoredtweets 
+STORED AS ORC
+AS
+SELECT 
+  t.*,
+  case s.sentiment 
+    when 'positive' then 2 
+    when 'neutral' then 1 
+    when 'negative' then 0 
+  end as sentiment  
+FROM tweet_table t LEFT OUTER JOIN sentiment_score s on t.id = s.id
+Total MapReduce jobs = 1
+15/12/08 22:22:25 INFO ql.Driver: Total MapReduce jobs = 1
+15/12/08 22:22:25 INFO ql.Driver: </PERFLOG method=TimeToSubmit end=1449642145828>
+15/12/08 22:22:25 INFO exec.MapredLocalTask: Generating plan file file:/tmp/hue/hive_2015-12-08_22-22-25_620_5795861145693226026/-local-10004/plan.xml
+15/12/08 22:22:26 WARN conf.HiveConf: DEPRECATED: Configuration property hive.metastore.local no longer has any effect. Make sure to provide a valid value for hive.metastore.uris if you are connecting to a remote metastore.
+setting HADOOP_USER_NAME	hue
+15/12/08 22:22:26 INFO exec.Task: setting HADOOP_USER_NAME	hue
+15/12/08 22:22:26 INFO exec.MapredLocalTask: Executing: /usr/lib/hadoop/libexec/../bin/hadoop jar /usr/lib/hive/lib/hive-exec-0.11.0.1.3.0.0-107.jar org.apache.hadoop.hive.ql.exec.ExecDriver -localtask -plan file:/tmp/hue/hive_2015-12-08_22-22-25_620_5795861145693226026/-local-10004/plan.xml   -jobconffile file:/tmp/hue/hive_2015-12-08_22-22-25_620_5795861145693226026/-local-10005/jobconf.xml
+Execution completed successfully
+15/12/08 22:22:29 INFO exec.Task: Execution completed successfully
+Mapred Local Task Succeeded . Convert the Join into MapJoin
+15/12/08 22:22:29 INFO exec.Task: Mapred Local Task Succeeded . Convert the Join into MapJoin
+15/12/08 22:22:29 INFO exec.MapredLocalTask: Execution completed successfully
+Mapred Local Task Succeeded . Convert the Join into MapJoin
+15/12/08 22:22:29 INFO exec.Task: Mapred Local Task Succeeded . Convert the Join into MapJoin
+Launching Job 1 out of 1
+15/12/08 22:22:29 INFO ql.Driver: Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+15/12/08 22:22:29 INFO exec.Task: Number of reduce tasks is set to 0 since there's no reduce operator
+15/12/08 22:22:29 INFO exec.ExecDriver: Using org.apache.hadoop.hive.ql.io.CombineHiveInputFormat
+15/12/08 22:22:29 INFO exec.ExecDriver: Archive 1 hash table files to /tmp/hue/hive_2015-12-08_22-22-25_620_5795861145693226026/-local-10002/HashTable-Stage-4/Stage-4.tar.gz
+15/12/08 22:22:29 INFO exec.ExecDriver: Upload 1 archive file  from/tmp/hue/hive_2015-12-08_22-22-25_620_5795861145693226026/-local-10002/HashTable-Stage-4/Stage-4.tar.gz to: hdfs://sandbox:8020/tmp/hive-beeswax-hue/hive_2015-12-08_22-22-25_620_5795861145693226026/-mr-10003/HashTable-Stage-4/Stage-4.tar.gz
+15/12/08 22:22:29 INFO exec.ExecDriver: Add 1 archive file to distributed cache. Archive file: hdfs://sandbox:8020/tmp/hive-beeswax-hue/hive_2015-12-08_22-22-25_620_5795861145693226026/-mr-10003/HashTable-Stage-4/Stage-4.tar.gz
+15/12/08 22:22:29 INFO exec.ExecDriver: Processing alias t
+15/12/08 22:22:29 INFO exec.ExecDriver: Adding input file hdfs://sandbox:8020/apps/hive/warehouse/tweet_table
+15/12/08 22:22:29 INFO exec.Utilities: Content Summary hdfs://sandbox:8020/apps/hive/warehouse/tweet_tablelength: 182414 num files: 1 num directories: 1
+15/12/08 22:22:29 INFO exec.ExecDriver: Making Temp Directory: hdfs://sandbox:8020/tmp/hive-beeswax-hue/hive_2015-12-08_22-22-25_620_5795861145693226026/-ext-10001
+15/12/08 22:22:29 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+15/12/08 22:22:30 INFO io.CombineHiveInputFormat: CombineHiveInputSplit creating pool for hdfs://sandbox:8020/apps/hive/warehouse/tweet_table; using filter path hdfs://sandbox:8020/apps/hive/warehouse/tweet_table
+15/12/08 22:22:30 INFO mapred.FileInputFormat: Total input paths to process : 1
+15/12/08 22:22:30 INFO io.CombineHiveInputFormat: number of splits 1
+Starting Job = job_201512082158_0003, Tracking URL = http://sandbox:50030/jobdetails.jsp?jobid=job_201512082158_0003
+15/12/08 22:22:30 INFO exec.Task: Starting Job = job_201512082158_0003, Tracking URL = http://sandbox:50030/jobdetails.jsp?jobid=job_201512082158_0003
